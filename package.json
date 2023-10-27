@@ -1,0 +1,23 @@
+{
+  "name": "adc",
+  "description": "RTL for Air Dresser Controller",
+  "author": "",
+  "dependencies": {
+    "cli-color": "^1.4.0",
+    "crc-full": "^1.1.0",
+    "csv-parser": "^2.3.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "node-datetime": "^2.1.2",
+    "portscanner": "^2.2.0",
+    "serialport": "^7.1.5",
+    "sleep": "^6.1.0",
+    "socket.io": "^2.2.0",
+    "sqlite3": "^4.0.9",
+    "vlc-simple-player": "^0.5.0",
+    "ws": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=8.0.0 <11.0.0"
+  }
+}

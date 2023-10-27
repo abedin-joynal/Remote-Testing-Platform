@@ -1,0 +1,30 @@
+/*
+.grayscale {
+    -webkit-filter: grayscale(100%); 
+    filter: grayscale(100%);
+  }
+*/
+.inkwell {
+    -webkit-filter: brightness(110%) contrast(110%) grayscale(100%) sepia(30%);
+    filter: brightness(110%) contrast(110%) grayscale(100%) sepia(30%);
+}
+.moon {
+    -webkit-filter: brightness(110%) contrast(110%) grayscale(100%);
+    filter: brightness(110%) contrast(110%) grayscale(100%);
+}
+.sepia {
+    -webkit-filter:sepia(50%);
+    filter:sepia(50%);
+}
+.willow {
+    -webkit-filter: brightness(90%) contrast(95%) grayscale(50%);
+    filter: brightness(90%) contrast(95%) grayscale(50%);
+}
+.brooklyn {
+    -webkit-filter: brightness(110%) contrast(90%);
+    filter: brightness(110%) contrast(90%);
+}
+.hunson {
+    -webkit-filter: brightness(120%) contrast(90%) saturate(110%);
+    filter: brightness(120%) contrast(90%) saturate(110%);
+  }

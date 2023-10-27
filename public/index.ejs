@@ -1,0 +1,207 @@
+<% include views/template-parts/header.ejs %>  
+
+<div class="container-fluid" id="page-container" style="height: 100vh">
+	<div class="row m-1 p-1 border-gray h-100">
+		<div class="col-md-6 col-sm-12 h-100 early-break">		
+            <div class="row h-50">
+                <div class="col-md-12 canvas-container border-gray p-0">
+                    <!-- <canvas id="video-canvas" width="400"></canvas> -->
+                    <canvas id="video-canvas"></canvas>
+                    <canvas id="drawing-canvas"></canvas>
+                    <div class="sidebar">
+                        <a id="capture" href="#capture"><i class="fa fa-fw fa-camera"></i><br>Capture</a>
+                        <a id="selection" href="#selection"><i class="fas fa-fw fa-crop"></i><br>Select</a>
+                        <a id="draw" href="#draw"><i class="far fa-fw fa-square"></i><br>Draw</a>
+                        <!-- <a href="#services"><i class="fa fa-fw fa-wrench"></i> Services</a>
+                        <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a>
+                        <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row h-50">
+                <div id="console-container" class="col-md-12 mt-2 rounded-0 p-0 pt-2 ">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#console-log" role="tab" data-toggle="tab" aria-controls="controls"><small class="mb-0 mt-4">Console Log</small></a>
+                        </li>
+                        <div  class="tab-control">
+                            <button type="button" title="Chart" class="chart btn btn-info tab-btn" data-toggle="modal" data-target="#chart-modal"><i class="fa fa-bar-chart fa-lg" aria-hidden="true"></i></button>
+                            <button id="logenabled" title="Disable log" class="btn btn-info tab-btn" data-toggle="modal"><i class="fa fa-eye-slash fa-lg"></i></button>
+                            <button id="logclear" title="Clear log" class="btn btn-info tab-btn" data-toggle="modal"><i class="fa fa-trash fa-lg"></i></button>
+                            <button id="logsave" title="Save log" class="btn btn-info tab-btn" data-toggle="modal"><i class="fa fa-save fa-lg"></i></button>
+                        </div>
+                    </ul>
+                    <div class="tab-content console-tab-content" id="console-content">
+                        <div role="tabpanel" class="tab-pane fade show active" id="console-log">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+		<div class="col-md-6 col-sm-12 h-100 early-break">
+            <div class="row mb-2 mt-3">
+                <!-- <div class="col-md-12"> -->
+                    <div class="col-md-6 text-left">
+                        <span id="connection_status_badge" class="badge mt-2">
+                            Status: <span class="text-danger">Disconnected</span>
+                        </span>
+                        <!-- <button type="button" class="btn btn-outline-secondary">
+                            Status <span class="badge badge-light text-danger">Disconnected</span>
+                        </button> -->
+                    </div>
+                    <div class="col-md-6 text-right ">
+                        <button id="connection_modal_btn" data-connection-status="false" class="btn btn-info" data-toggle="modal">Connect</button>
+                    </div>
+                <!-- </div>     -->
+            </div>
+            <div class="row">
+			    <div id="interface" class="col-12">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#skin" role="tab" data-toggle="tab" aria-controls="skin"><small class="mb-0 mt-4">Skin</small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#controls" role="tab" data-toggle="tab" aria-controls="controls"><small class="mb-0 mt-4">Controls</small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#elements" role="tab" data-toggle="tab" aria-controls="elements"><small class="mb-0 mt-4">Elements</small></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade" id="controls">
+                            <div class="row">
+                                <div class="col-4 text-left"><button data-key="Left" class="int_key btn custom-btn-slim btn-outline-secondary">Left</button></div>
+                                <div class="col-4 text-center"></div>
+                                <div class="col-4 text-right"><button data-key="Right" class="int_key btn custom-btn-slim btn-outline-secondary">Right</button></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-4 text-left"><button data-key="Standard" class="int_key btn custom-btn-slim btn-outline-secondary">Standard</button></div>
+                                <div class="col-4 text-center"><button data-key="Dry" class="int_key btn custom-btn-slim btn-outline-secondary">Dry</button></div>
+                                <div class="col-4 text-right"><button data-key="Fine-dust" class="int_key btn custom-btn-slim btn-outline-secondary">Fine Dust</button></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-4 text-left"><button data-key="Rapidity" class="int_key btn custom-btn-slim btn-outline-secondary">Rapidity</button></div>
+                                <div class="col-4 text-center"><button data-key="Special" class="int_key btn custom-btn-slim btn-outline-secondary">Special</button></div>
+                                <div class="col-4 text-right"><button data-key="Sterilization" class="int_key btn custom-btn-slim btn-outline-secondary">Sterilization</button></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-4 text-left"><button data-key="Silent" class="int_key btn custom-btn-slim btn-outline-secondary">Silent</button></div>
+                                <div class="col-4 text-center"><button data-key="Reservation" class="int_key btn custom-btn-slim btn-outline-secondary">Reservation</button></div>
+                                <div class="col-4 text-right"><button data-key="Smart Control 1" class="int_key btn custom-btn-slim btn-outline-secondary">Smart Control 1</button></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-4 text-left"><button data-key="Child Protection" class="int_key btn custom-btn-slim btn-outline-secondary">Child Protection</button></div>
+                                <div class="col-4 text-center"><button data-key="Clean Storage" class="int_key btn custom-btn-slim btn-outline-secondary">Clean Storage</button></div>
+                                <div class="col-4 text-right"><button data-key="Smart Control 2" class="int_key btn custom-btn-slim btn-outline-secondary">Smart Control 2</button></div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-4 text-left"><button data-key="Power On/Off" class="int_key btn custom-btn-slim btn-outline-secondary">Power On/Off</button></div>
+                                <div class="col-4 text-center"><button data-key="Run" class="int_key btn custom-btn-slim btn-outline-secondary">Run</button></div>
+                                <div class="col-4 text-right"><button data-key="Pause" class="int_key btn custom-btn-slim btn-outline-secondary">Pause</button></div>
+                            </div>
+                            <!-- <div class="row mt-2">
+                                <div class="col-8 text-left"><input class="form-control form-control-sm" type="text" placeholder=""></div>
+                                <div class="col-4 text-right"><button class="btn custom-btn-slim btn-info">Send</button></div>
+                            </div> -->
+                            <div class="row mt-2">
+                                <div class="col-8 text-left"><input class="form-control form-control-sm" id="hex_value" type="text" placeholder=""></div>
+                                <div class="col-4 text-right"><button data-key="Send" class="send_hex_value btn btn-info custom-btn-slim">Send</button></div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="elements">
+                            <div class="row">
+                                <div class="col-8 text-left input-wrapper"><input class="form-control form-control-sm" id="search_term" type="text" placeholder="Search Element"></div>
+                            </div>
+                            <div class="col-12 text-left elemlist">
+
+                            </div>
+                            <div class="col-12 text-left eleminfo">
+                                <div class="row mt-2"><label id="selectedElement"></label></div>
+                            </div>
+                        </div> <!-- tab panel -->
+                        <div role="tabpanel" class="tab-pane fade show active" id="skin">
+                            <div class="col-12 text-center skin_container">
+                                <img src='image_cropped.png' id='custom-skin' usemap = "#skin-map">
+                                <a href="#1" data-key="Standard"></a>
+                                <a href="#2" data-key="Fine-dust"></a>
+                                <a href="#3" data-key="Rapidity"></a>
+                                <a href="#4" data-key="Sterilization"></a>
+                                <a href="#5" data-key="Dry"></a>
+                                <a href="#6" data-key="Special"></a>
+                                <a href="#7" data-key="Silent" data-secondary-key="Child Protection"></a>
+                                <a href="#8" data-key="Reservation" data-secondary-key="Clean Storage"></a>
+                                <a href="#9" data-key="Smart Control 1"></a>
+                                <a href="#10" data-key="Power On/Off"></a>
+                                <a href="#11" data-key="Pause"></a>
+                                <a href="#12" data-key="Left"></a>
+                                <a href="#13" data-key="Right"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+			</div> 
+		</div> <!-- col-md-6-->
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="connection-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Connections</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <div class="row">
+                        <% include views/template-parts/connection-properties.ejs %>
+                    </div> <!-- row -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="chart-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <div class="text-left">
+                    <button class="start btn custom-btn-slim btn-outline-info" id="startbtn">Start</button>
+                    <button class="refresh btn custom-btn-slim btn-outline-info">Refresh</button>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="checkboxcontainer" class="">
+                            <div class="list-group custom-list-group overflow-auto" role="tablist">
+                                <div id="chart-list-alert" class="alert alert-info" role="alert">
+                                    <i class="fa fa-list"></i> No data yet
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="col-md-8 pl-0 mh-100">
+                        <div id="chartcontainer" class="border-gray p-1 overflow-auto"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden Values -->
+<input type="hidden" id="elements_info" value="<%=elements_info%>" />
+<input type="hidden" id="client_ip" value="<%=client_info.ip%>" />
+<input type="hidden" id="client_agent" value="<%=client_info.agent%>" />
+<!-- Hidden Values -->
+
+<% include views/template-parts/footer.ejs %>  
+	

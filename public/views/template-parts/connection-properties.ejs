@@ -1,0 +1,131 @@
+    <div class="col-12">
+        <div class="row" id="connection-list">
+            <div class="col-6">
+                <div class="list-group tablist" role="tablist">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="fa fa-plus"></i>  Add New Connection </a>
+                    <% if(connections) { %>
+                        <% connections.forEach(function(connection) { %>
+                            <a class="list-group-item list-group-item-action connection-tab-<%= connection.id %>" id="list-profile-list" data-toggle="list" href="#list-profile" 
+                            data-connection-id="<%= connection.id %>" data-connection-name="<%= connection.connection_name %>" data-connection-info="<%= JSON.stringify(connection) %>" 
+                            data-is-connected="false"
+                            role="tab" aria-controls="profile"><i class="fa fa-caret-right"></i>  <%= connection.connection_name %></a>
+                        <% }) %>
+                    <%  } %>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="tab-content border-0" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel">
+                        
+                    </div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"></div>
+                    <!-- <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list"></div> -->
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <hr>
+    
+    <div id="new-connection-input-markup" class="hidden">
+        <div class="form-group row">
+            <div class="label-container col-4 text-right">
+                <label>Name</label>
+            </div>
+            <div class="btn-group col-8">
+                <input type="text" class="form-control new-connection-input" placeholder="Connection Name" aria-describedby="basic-addon2">
+            </div>
+        </div>
+    </div>
+
+    <div id="connection-properties-markup" class="hidden">
+        <div class="cpm" data-connection-name="" data-connection-id="" data-new-connection="">
+            <div class="alert alert-primary cpm-message" role="alert" style="display:none">
+                This is a primary alert—check it out!
+            </div>
+            <div class="form-group row">
+                <div class="label-container col-4 text-right">            
+                    <label>Port</label>
+                </div>    
+                <div class="btn-group col-8">
+                    <button id="cp-port" class="btn btn-secondary btn-sm dropdown-toggle text-right" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="float-left"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="label-container col-4 text-right">
+                    <label>Baud Rate</label>
+                </div>
+                <div class="btn-group col-8">
+                    <button id="cp-baudrate" class="btn btn-secondary btn-sm dropdown-toggle text-right" value="9600" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="float-left">9600</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:void(0)">2400</a>
+                        <a class="dropdown-item" href="javascript:void(0)">4800</a>
+                        <a class="dropdown-item" href="javascript:void(0)" selected>9600</a>
+                        <a class="dropdown-item" href="javascript:void(0)">14400</a>
+                        <a class="dropdown-item" href="javascript:void(0)">19200</a>
+                        <a class="dropdown-item" href="javascript:void(0)">38400</a>
+                        <a class="dropdown-item" href="javascript:void(0)">57600</a>
+                        <a class="dropdown-item" href="javascript:void(0)">115200</a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="label-container col-4 text-right">
+                    <label>Parity</label>
+                </div>    
+                <div class="btn-group col-8">
+                    <button id="cp-parity" class="btn btn-secondary btn-sm dropdown-toggle text-right" value="even" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="float-left">even</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:void(0)">none</a>
+                        <a class="dropdown-item" href="javascript:void(0)">even</a>
+                        <a class="dropdown-item" href="javascript:void(0)">mark</a>
+                        <a class="dropdown-item" href="javascript:void(0)">odd</a>
+                        <a class="dropdown-item" href="javascript:void(0)">space</a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="label-container col-4 text-right">
+                    <label>Stop Bit</label>
+                </div>    
+                <div class="btn-group col-8">
+                    <button id="cp-stopbit" class="btn btn-secondary btn-sm dropdown-toggle text-right" value="1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="float-left">1</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:void(0)">1</a>
+                        <a class="dropdown-item" href="javascript:void(0)">2</a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="label-container col-4 text-right">
+                    <label>Data Bit</label>
+                </div>
+                <div class="btn-group col-8">
+                    <button id="cp-databit" class="btn btn-secondary btn-sm dropdown-toggle text-right" value="8" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="float-left">8</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:void(0)">8</a>
+                        <a class="dropdown-item" href="javascript:void(0)">7</a>
+                        <a class="dropdown-item" href="javascript:void(0)">6</a>
+                        <a class="dropdown-item" href="javascript:void(0)">5</a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-danger custom-btn-slim cp_delete">Delete</button>
+                <button type="button" class="btn btn-info custom-btn-slim cp_save_connect_btn" data-key="connect" data-first-attempt="true">Save & Connect</button>
+            </div>
+        </div>
+    </div> <!-- end #connection-properties-markup -->
+
